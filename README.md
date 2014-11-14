@@ -8,11 +8,11 @@ is listening on exposed port `3310`.
 Usage
 -----
 
-    docker run -d -p 3310:3310 dinkel/docker-clamavd
+    docker run -d -p 3310:3310 dinkel/clamavd
     
 or linked (this is how I use it)
 
-    docker run -d --name clamavd dinkel/docker-clamavd
+    docker run -d --name clamavd dinkel/clamavd
     docker run -d --link clamavd:clamavd application-with-clamdscan-or-something
     
 Configuration (environment variables)
@@ -27,8 +27,8 @@ It has been a design decision to discard exporting the virus database to a data
 volume as it will be always be brought up-to-date (quite quickly) upon starting 
 a new container.
 
-run.sh
-------
+Explaining run.sh
+-----------------
 
 This is a poor man's `supervisord`. It is my strong (but not so much challenged)
 belief, that there shouldn't be yet another process manager (Docker has one, 
