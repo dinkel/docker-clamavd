@@ -1,8 +1,8 @@
 docker-clamavd
 ==============
 
-ClamAV daemon as a Docker image. It *build*s with a current virus database and
-*run*s `freshclam` in the background constantly updating the database. `clamd` 
+ClamAV daemon as a Docker image. It *builds* with a current virus database and
+*runs* `freshclam` in the background constantly updating the database. `clamd` 
 is listening on exposed port `3310`.
 
 Usage
@@ -42,6 +42,6 @@ Todo
 ----
 
 * Make sure my little script above works in all circumstances. I know that when
-  omitting the `-d` one cannot stop the process using <Ctrl><c>.
+  omitting the `-d` one cannot stop the process using `<Ctrl><c>`.
   
 * Make sure all logs are written to `stdout` or `stderr`.
