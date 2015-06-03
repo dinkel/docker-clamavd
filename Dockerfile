@@ -1,14 +1,14 @@
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
 
-ENV CLAMAV_VERSION 0.98.5
+ENV CLAMAV_VERSION 0.98.7
 
-RUN echo "deb http://http.debian.net/debian/ wheezy main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://http.debian.net/debian/ wheezy-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ wheezy/updates main contrib non-free" >> /etc/apt/sources.list && \
+RUN echo "deb http://http.debian.net/debian/ jessie main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://http.debian.net/debian/ jessie-updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
         libclamunrar6 \
