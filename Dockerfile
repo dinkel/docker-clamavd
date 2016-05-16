@@ -14,8 +14,7 @@ RUN echo "deb http://http.debian.net/debian/ jessie main contrib non-free" > /et
         clamav-freshclam=${CLAMAV_VERSION}* \
         libclamunrar7 \
         wget && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
     wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
