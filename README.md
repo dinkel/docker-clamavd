@@ -1,4 +1,4 @@
-docker-clamavd
+clamav
 ==============
 
 ClamAV daemon as a Docker image. It *builds* with a current virus database and
