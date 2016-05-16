@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
+MAINTAINER Ruggero <infiniteproject@gmail.com>
 
 ENV CLAMAV_VERSION 0.99
 
