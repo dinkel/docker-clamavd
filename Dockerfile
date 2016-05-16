@@ -34,4 +34,4 @@ EXPOSE 3310
 
 ADD run.sh /
 
-CMD ["/run.sh"]
+CMD ["/entrypoint.sh"]
