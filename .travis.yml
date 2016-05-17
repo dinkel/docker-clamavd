@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t infiniteproject/clamav .
+  - docker run --name duplicity -d infiniteproject/clamav
+script:
+  - docker ps -a
