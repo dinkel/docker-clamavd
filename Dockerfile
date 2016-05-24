@@ -2,7 +2,8 @@ FROM debian:jessie
 
 MAINTAINER Ruggero <infiniteproject@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive 
+ENV DEBIAN_FRONTEND noninteractive
+ENV MAX_SIZE 256M 
 
 RUN echo "deb http://http.debian.net/debian/ jessie main contrib non-free" > /etc/apt/sources.list && \
     echo "deb http://http.debian.net/debian/ jessie-updates main contrib non-free" >> /etc/apt/sources.list && \
@@ -25,6 +26,7 @@ RUN mkdir /var/run/clamav && \
     chmod 750 /var/run/clamav
 
 RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
+    sed -i 's/^StreamMaxLength .*$/StreamMaxLength $MAX_SIZE/g' /etc/clamav/clamd.conf && \
     echo "TCPSocket 3310" >> /etc/clamav/clamd.conf && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
