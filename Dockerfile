@@ -1,10 +1,10 @@
-FROM alpine:latest
+FROM alpine:edge
 
 MAINTAINER Ruggero <infiniteproject@gmail.com>
 
 ENV MAX_SIZE 256M 
 
-RUN apk add --update clamav && rm -fr /var/cache/apk/*
+RUN apk add --update clamav clamav-libunrar && rm -fr /var/cache/apk/*
 
 RUN mkdir /var/run/clamav && \
     mv /etc/clamav/clamd.conf.sample /etc/clamav/clamd.conf && \
