@@ -6,7 +6,7 @@ ENV MAX_SIZE 256M
 
 RUN apk add --update clamav && rm -fr /var/cache/apk/*
 
-RUN mv /etc/clamav/clamav.conf.sample /etc/clamav/clamav.conf && \
+RUN mv /etc/clamav/clamd.conf.sample /etc/clamav/clamd.conf && \
     mv /etc/clamav/freshclam.conf.sample /etc/clamav/freshclam.conf && \
     echo "StreamMaxLength $MAX_SIZE" >> /etc/clamav/clamd.conf && \
     echo "TCPSocket 3310" >> /etc/clamav/clamd.conf && \
