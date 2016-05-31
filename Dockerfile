@@ -15,10 +15,10 @@ RUN mkdir /var/run/clamav && \
     chown clamav:clamav /var/run/clamav && \
     chmod 750 /var/run/clamav
 
-RUN sed -i "s/^Foreground .*$/Foreground true/g" /etc/clamav/clamd.conf && \
-    sed -i "s/^StreamMaxLength .*$/StreamMaxLength $MAX_SIZE/g" /etc/clamav/clamd.conf && \
-    sed -i "s/^Foreground .*$/Foreground true/g" /etc/clamav/freshclam.conf && \
-    echo "TCPSocket 3310" >> /etc/clamav/clamd.conf
+RUN sed -i "s/^Foreground .*$/Foreground true/g" /etc/clamd.conf && \
+    sed -i "s/^StreamMaxLength .*$/StreamMaxLength $MAX_SIZE/g" /etc/clamd.conf && \
+    sed -i "s/^Foreground .*$/Foreground true/g" /etc/freshclam.conf && \
+    echo "TCPSocket 3310" >> /etc/clamd.conf
 
 EXPOSE 3310
 COPY docker-entrypoint.sh /entrypoint.sh
