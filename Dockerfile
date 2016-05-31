@@ -6,7 +6,7 @@ ENV MAX_SIZE 256M
 
 RUN apk add --update clamav clamav-libunrar && rm -fr /var/cache/apk/*
 
-RUN #mkdir /var/run/clamav && \
+RUN # mkdir /var/run/clamav && \
 #    mv /etc/clamav/clamd.conf.sample /etc/clamav/clamd.conf && \
 #    mv /etc/clamav/freshclam.conf.sample /etc/clamav/freshclam.conf && \
     echo "StreamMaxLength $MAX_SIZE" >> /etc/clamav/clamd.conf && \
