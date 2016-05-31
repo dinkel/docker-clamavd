@@ -4,21 +4,16 @@ MAINTAINER Ruggero <infiniteproject@gmail.com>
 
 ENV MAX_SIZE 256M 
 
-RUN apk add --update clamav-daemon
+RUN apk add --update clamav && \
+    rm -fr /var/cache/apk/* && \
+    freshclam
 
-RUN wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
-    wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
-    wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
-    chown clamav:clamav /var/lib/clamav/*.cvd
-
-RUN mkdir /var/run/clamav && \
-    chown clamav:clamav /var/run/clamav && \
-    chmod 750 /var/run/clamav
-
-RUN sed -i "s/^Foreground .*$/Foreground true/g" /etc/clamd.conf && \
-    sed -i "s/^StreamMaxLength .*$/StreamMaxLength $MAX_SIZE/g" /etc/clamd.conf && \
-    sed -i "s/^Foreground .*$/Foreground true/g" /etc/freshclam.conf && \
-    echo "TCPSocket 3310" >> /etc/clamd.conf
+RUN mv /etc/clamav/clamav.conf.sample /etc/clamav/clamav.conf
+    mv /etc/clamav/freshclam.conf.sample /etc/clamav/freshclam.conf
+    echo "StreamMaxLength $MAX_SIZE" >> /etc/clamav/clamd.conf
+    echo "TCPSocket 3310" >> /etc/clamav/clamd.conf
+    echo "Foreground true" >> /etc/clamav/clamd.conf
+    echo "Foreground true" >> /etc/clamav/freshclam.conf
 
 EXPOSE 3310
 COPY docker-entrypoint.sh /entrypoint.sh
