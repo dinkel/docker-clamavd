@@ -1,5 +1,4 @@
 FROM alpine:edge
-
 MAINTAINER Ruggero <infiniteproject@gmail.com>
 
 ENV MAX_SIZE 256M 
